@@ -1,7 +1,22 @@
 import academia.*
 import magos.*
-describe "academina" {
-    test "test 1" {
-        assert.that(true)
-    }
+
+describe "Academina" {
+  test "La academia intenta reclutar a Aldric, pero no puede debido a su bajo poder, por lo que queda en la lista de candidatos" {
+    academina.reclutar(aldric)
+    assert.that(academina.candidatos().contains(aldric))
+    assert.notThat(academina.magos().contains(aldric))
+  }
+  
+  test "Aldric cambia al Bastón de Fuego y entrena de forma individual. Luego, la academia vuelve a evaluar candidatos. Ahora Aldric entra al equipo" {
+    aldric.cambiarBaston(bastonDeFuego)
+    aldric.entrenar() //academina.reclutar(aldric)
+    
+    assert.equals(#{aldric}, academina.evaluarCandidatos())
+    
+    assert.notThat(academina.candidatos().contains(aldric))
+    
+    
+    assert.that(academina.magos().contains(aldric))
+  }
 }
