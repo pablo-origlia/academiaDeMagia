@@ -19,7 +19,6 @@ object academina {
     const pasantes = candidatos.filter({ c => self.puedeIngresar(c) })
     candidatos.removeAll(pasantes)
     magos.addAll(pasantes)
-    return pasantes
   }
   
   method entrenar() {
@@ -34,7 +33,7 @@ object academina {
   
   method magoMenosPoderoso() = magos.min({ m => m.poder() })
   
-  method delta() = (self.magoMasPoderoso().energia() - self.magoMenosPoderoso()).abs()
+  method delta() = (self.magoMasPoderoso().energia() - self.magoMenosPoderoso().energia()).abs()
   
   method poderes() = magos.filter({ m => m.energia() > 90 }).map({ m => m.poder() })
 }
@@ -50,4 +49,8 @@ object escudo {
   method aumentarDurabilidad(unValor) {
     durabilidad = (durabilidad + unValor).min(1000)
   }
+  
+  method resistencia() = resistencia
+  
+  method durabilidad() = durabilidad
 }

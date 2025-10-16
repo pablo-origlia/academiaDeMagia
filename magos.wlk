@@ -1,7 +1,7 @@
 object selene {
   var energia = 35
   var poder = 60
-  var luzLunar = true
+  var luzLunar = false
   
   method energia() = energia
   
